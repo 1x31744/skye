@@ -26,7 +26,6 @@ import com.baoyz.swipemenulistview.SwipeMenuCreator;
 import com.baoyz.swipemenulistview.SwipeMenuItem;
 import com.baoyz.swipemenulistview.SwipeMenuListView;
 import com.google.android.material.navigation.NavigationView;
-import com.google.common.primitives.Bytes;
 import com.koopa.skye.Fragments.Main.HomeFragment;
 import com.koopa.skye.Fragments.Main.JournalFragment;
 import com.koopa.skye.Fragments.Main.LibraryFragment;
