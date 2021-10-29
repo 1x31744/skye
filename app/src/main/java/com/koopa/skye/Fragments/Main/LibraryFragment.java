@@ -1,26 +1,11 @@
 package com.koopa.skye.Fragments.Main;
 
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.graphics.Bitmap;
 import android.graphics.Color;
-import android.graphics.Matrix;
-import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
-import android.renderscript.ScriptGroup;
-import android.util.Base64;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.ListView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -30,37 +15,25 @@ import com.baoyz.swipemenulistview.SwipeMenu;
 import com.baoyz.swipemenulistview.SwipeMenuCreator;
 import com.baoyz.swipemenulistview.SwipeMenuItem;
 import com.baoyz.swipemenulistview.SwipeMenuListView;
-import com.koopa.skye.Contents;
-import com.koopa.skye.ListAdapter;
+import com.koopa.skye.LibraryContents;
+import com.koopa.skye.LibraryListAdapter;
 import com.koopa.skye.MainActivity;
 import com.koopa.skye.R;
 import com.koopa.skye.TinyDB;
-import com.koopa.skye.databinding.ActivityMainBinding;
 
-import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Date;
-import java.util.prefs.AbstractPreferences;
 
 public class LibraryFragment extends Fragment {
 
-    Contents contents;
+    LibraryContents contents;
     TinyDB tinydb;
-    public static String[] entryTitle = {};
-    public static String[] entryDate = {};
-    public static String[] entryContents = {};
-    String[] entryImage = {};
 
-    ArrayList<String> entryTitleList;
-    ArrayList<String> entryDateList;
-    ArrayList<String> entryContentsList;
-    ArrayList<String> entryImageList;
-    ArrayList<Contents> arrayList;
+    ArrayList<LibraryContents> arrayList;
 
     SwipeMenuListView listView;
 
-    ListAdapter listAdapter;
+    LibraryListAdapter libraryListAdapter;
 
     @Nullable
     @Override
@@ -72,22 +45,17 @@ public class LibraryFragment extends Fragment {
         listView = (root.findViewById(R.id.library_list));
 
         if (tinydb.getListContents("arraylist") != null) {
-            arrayList = new ArrayList<Contents>(tinydb.getListContents("arraylist"));
+            arrayList = new ArrayList<LibraryContents>(tinydb.getListContents("arraylist"));
         }
         else {
             arrayList = new ArrayList<>();
         }
 
-        entryTitleList = new ArrayList<>(Arrays.asList(entryTitle));
-        entryDateList = new ArrayList<>(Arrays.asList(entryDate));
-        entryContentsList = new ArrayList<>(Arrays.asList(entryContents));
-        entryImageList = new ArrayList<>(Arrays.asList(entryImage));
-
 
         addContents();
 
-        listAdapter = new ListAdapter(getActivity(), arrayList);
-        listView.setAdapter(listAdapter);
+        libraryListAdapter = new LibraryListAdapter(getActivity(), arrayList);
+        listView.setAdapter(libraryListAdapter);
 
         SwipeMenuCreator creator = new SwipeMenuCreator() {
 
@@ -141,7 +109,7 @@ public class LibraryFragment extends Fragment {
                         break;
                     case 1:
                         removeContents(position);
-                        listAdapter.notifyDataSetChanged();
+                        libraryListAdapter.notifyDataSetChanged();
                         break;
                 }
                 // false : close the menu; true : not close the menu
@@ -155,7 +123,7 @@ public class LibraryFragment extends Fragment {
     void addContents(){
 
         if (MainActivity.libraryTitle != null) {
-            contents = new Contents(MainActivity.libraryTitle, MainActivity.libraryDate, MainActivity.entryContents, MainActivity.sEncodedImage);
+            contents = new LibraryContents(MainActivity.libraryTitle, MainActivity.libraryDate, MainActivity.entryContents, MainActivity.sEncodedImage);
             arrayList.add(contents);
         }
 

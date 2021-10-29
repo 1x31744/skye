@@ -3,9 +3,6 @@ package com.koopa.skye;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Matrix;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,15 +14,13 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.koopa.skye.Fragments.Main.LibraryFragment;
-
 import java.util.ArrayList;
 
-public class ListAdapter extends ArrayAdapter<Contents> {
+public class LibraryListAdapter extends ArrayAdapter<LibraryContents> {
 
-    Contents contents;
+    LibraryContents contents;
 
-    public ListAdapter(@NonNull Context context, ArrayList<Contents> arrayList) {
+    public LibraryListAdapter(@NonNull Context context, ArrayList<LibraryContents> arrayList) {
         super(context, R.layout.library_item, arrayList);
     }
 

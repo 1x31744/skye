@@ -606,25 +606,25 @@ public class TinyDB {
         }
     }
 
-    public void putListContents(String key, ArrayList<Contents> playerList){
+    public void putListContents(String key, ArrayList<LibraryContents> playerList){
         checkForNullKey(key);
         Gson gson = new Gson();
         ArrayList<String> objStrings = new ArrayList<String>();
-        for(Contents contents: playerList){
+        for(LibraryContents contents: playerList){
             objStrings.add(gson.toJson(contents));
         }
         putListString(key, objStrings);
     }
 
     //No need Class<?> mClass parameter. Because we know it is Player!
-    public ArrayList<Contents> getListContents(String key){
+    public ArrayList<LibraryContents> getListContents(String key){
         Gson gson = new Gson();
 
         ArrayList<String> objStrings = getListString(key);
-        ArrayList<Contents> playerList =  new ArrayList<Contents>();
+        ArrayList<LibraryContents> playerList =  new ArrayList<LibraryContents>();
 
         for(String jObjString : objStrings){
-            Contents player  = gson.fromJson(jObjString,  Contents.class);
+            LibraryContents player  = gson.fromJson(jObjString,  LibraryContents.class);
             playerList.add(player);
         }
         return playerList;
