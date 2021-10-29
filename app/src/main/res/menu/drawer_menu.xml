@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item android:id="@+id/nav_home"
+            android:icon="@drawable/ic_baseline_home_24"
+            android:title="Home" />
+        <item android:id="@+id/nav_AI"
+            android:icon="@drawable/ic_baseline_textsms_24"
+            android:title="Skye" />
+        <item android:id="@+id/nav_journal"
+            android:icon="@drawable/ic_baseline_add_24"
+            android:title="Add Journal Entry" />
+        <item android:id="@+id/nav_library"
+            android:icon="@drawable/ic_baseline_library_24"
+            android:title="Journal Library" />
+        <item android:id="@+id/nav_settings"
+            android:icon="@drawable/ic_baseline_settings_24"
+            android:title="Settings" />
+    </group>
+</menu>

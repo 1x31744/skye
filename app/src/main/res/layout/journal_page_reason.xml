@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/page2">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="120dp"
+            android:gravity="center"
+            android:text="Was there anything notable in your day?"
+            android:textColor="@color/light_grey"
+            android:textSize="34sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/journal_reason_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="120dp"
+            android:background="@color/cyan"
+            android:onClick="pageButton"
+            android:text="Done"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/friends_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="reasonButtons"
+            android:text="Friends"
+            app:layout_constraintBottom_toTopOf="@+id/journal_reason_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.501"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView"
+            app:layout_constraintVertical_bias="0.438" />
+
+        <Button
+            android:id="@+id/relationships_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="reasonButtons"
+            android:text="Relationships"
+            app:layout_constraintBottom_toBottomOf="@+id/friends_button"
+            app:layout_constraintEnd_toStartOf="@+id/friends_button"
+            app:layout_constraintTop_toTopOf="@+id/friends_button" />
+
+        <Button
+            android:id="@+id/possesions_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="reasonButtons"
+            android:text="Possesions"
+            app:layout_constraintBottom_toBottomOf="@+id/friends_button"
+            app:layout_constraintStart_toEndOf="@+id/friends_button"
+            app:layout_constraintTop_toTopOf="@+id/friends_button" />
+
+        <Button
+            android:id="@+id/work_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="reasonButtons"
+            android:text="Work"
+            app:layout_constraintBottom_toTopOf="@+id/friends_button"
+            app:layout_constraintEnd_toEndOf="@+id/friends_button"
+            app:layout_constraintStart_toStartOf="@+id/friends_button" />
+
+        <Button
+            android:id="@+id/home_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="reasonButtons"
+            android:text="Home"
+            app:layout_constraintBottom_toTopOf="@+id/relationships_button"
+            app:layout_constraintEnd_toStartOf="@+id/work_button" />
+
+        <Button
+            android:id="@+id/family_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="reasonButtons"
+            android:text="Family"
+            app:layout_constraintBottom_toTopOf="@+id/possesions_button"
+            app:layout_constraintStart_toEndOf="@+id/work_button" />
+
+        <Button
+            android:id="@+id/sports_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="reasonButtons"
+            android:text="Sports"
+            app:layout_constraintEnd_toEndOf="@+id/friends_button"
+            app:layout_constraintStart_toStartOf="@+id/friends_button"
+            app:layout_constraintTop_toBottomOf="@+id/friends_button" />
+
+        <Button
+            android:id="@+id/food_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="reasonButtons"
+            android:text="Food"
+            app:layout_constraintStart_toEndOf="@+id/sports_button"
+            app:layout_constraintTop_toBottomOf="@+id/possesions_button" />
+
+        <Button
+            android:id="@+id/travel_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="reasonButtons"
+            android:text="Travel"
+            app:layout_constraintEnd_toStartOf="@+id/sports_button"
+            app:layout_constraintTop_toBottomOf="@+id/relationships_button" />
+
+        <Button
+            android:id="@+id/other_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/cyan"
+            android:onClick="reasonButtons"
+            android:text="Other"
+            app:layout_constraintEnd_toEndOf="@+id/sports_button"
+            app:layout_constraintStart_toStartOf="@+id/sports_button"
+            app:layout_constraintTop_toBottomOf="@+id/sports_button" />
+
+        <Button
+            android:id="@+id/school_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="reasonButtons"
+            android:text="School"
+            app:layout_constraintEnd_toStartOf="@+id/other_button"
+            app:layout_constraintTop_toBottomOf="@+id/travel_button" />
+
+        <Button
+            android:id="@+id/hobbies_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="reasonButtons"
+            android:text="Hobbies"
+            app:layout_constraintStart_toEndOf="@+id/other_button"
+            app:layout_constraintTop_toBottomOf="@+id/food_button" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</RelativeLayout>

@@ -1,0 +1,675 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/page1">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="How did you feel today?"
+            android:textColor="@color/light_grey"
+            android:textSize="34sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ScrollView
+            android:id="@+id/scrollView2"
+            android:layout_width="match_parent"
+            android:layout_height="650dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="SpeakableTextPresentCheck">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageButton
+                    android:id="@+id/happy_button"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:background="@mipmap/ic_slight_smile"
+                    android:onClick="feelingButtons"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="SpeakableTextPresentCheck" />
+
+                <TextView
+                    android:id="@+id/happy_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Happy"
+                    android:textSize="25sp"
+                    app:layout_constraintEnd_toEndOf="@+id/happy_button"
+                    app:layout_constraintStart_toStartOf="@+id/happy_button"
+                    app:layout_constraintTop_toBottomOf="@+id/happy_button" />
+
+                <ImageButton
+                    android:id="@+id/sad_button"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:background="@mipmap/ic_sad"
+                    android:onClick="feelingButtons"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="SpeakableTextPresentCheck" />
+
+                <TextView
+                    android:id="@+id/sad_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sad"
+                    android:textSize="25sp"
+                    app:layout_constraintEnd_toEndOf="@+id/sad_button"
+                    app:layout_constraintStart_toStartOf="@+id/sad_button"
+                    app:layout_constraintTop_toBottomOf="@+id/sad_button" />
+
+                <ImageButton
+                    android:id="@+id/angry_button"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:layout_marginTop="45dp"
+                    android:background="@mipmap/ic_angry"
+                    android:onClick="feelingButtons"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/happy_text"
+                    tools:ignore="SpeakableTextPresentCheck" />
+
+                <TextView
+                    android:id="@+id/angry_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Angry"
+                    android:textSize="25sp"
+                    app:layout_constraintEnd_toEndOf="@+id/angry_button"
+                    app:layout_constraintStart_toStartOf="@+id/angry_button"
+                    app:layout_constraintTop_toBottomOf="@+id/angry_button" />
+
+                <ImageButton
+                    android:id="@+id/enraged_button"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:layout_marginTop="45dp"
+                    android:background="@mipmap/ic_feelings_enraged"
+                    android:onClick="feelingButtons"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/sad_text"
+                    tools:ignore="SpeakableTextPresentCheck" />
+
+                <TextView
+                    android:id="@+id/enraged_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Enraged"
+                    android:textSize="25sp"
+                    app:layout_constraintEnd_toEndOf="@+id/enraged_button"
+                    app:layout_constraintStart_toStartOf="@+id/enraged_button"
+                    app:layout_constraintTop_toBottomOf="@+id/enraged_button" />
+
+                <ImageButton
+                    android:id="@+id/tearful_button"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:layout_marginTop="45dp"
+                    android:background="@mipmap/ic_tearful"
+                    android:onClick="feelingButtons"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/angry_text"
+                    tools:ignore="SpeakableTextPresentCheck" />
+
+                <TextView
+                    android:id="@+id/tearful_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tearful"
+                    android:textSize="25sp"
+                    app:layout_constraintEnd_toEndOf="@+id/tearful_button"
+                    app:layout_constraintStart_toStartOf="@+id/tearful_button"
+                    app:layout_constraintTop_toBottomOf="@+id/tearful_button" />
+
+                <ImageButton
+                    android:id="@+id/deppressed_button"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:layout_marginTop="45dp"
+                    android:background="@mipmap/ic_deppressed"
+                    android:onClick="feelingButtons"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/enraged_text"
+                    tools:ignore="SpeakableTextPresentCheck" />
+
+                <TextView
+                    android:id="@+id/deppressed_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Deppressed"
+                    android:textSize="25sp"
+                    app:layout_constraintEnd_toEndOf="@+id/deppressed_button"
+                    app:layout_constraintStart_toStartOf="@+id/deppressed_button"
+                    app:layout_constraintTop_toBottomOf="@+id/deppressed_button" />
+
+                <ImageButton
+                    android:id="@+id/pressured_button"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:layout_marginTop="45dp"
+                    android:background="@mipmap/ic_pressured"
+                    android:onClick="feelingButtons"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tearful_text"
+                    tools:ignore="SpeakableTextPresentCheck" />
+
+                <TextView
+                    android:id="@+id/pressured_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pressured"
+                    android:textSize="25sp"
+                    app:layout_constraintEnd_toEndOf="@+id/pressured_button"
+                    app:layout_constraintStart_toStartOf="@+id/pressured_button"
+                    app:layout_constraintTop_toBottomOf="@+id/pressured_button" />
+
+                <ImageButton
+                    android:id="@+id/worried_button"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:layout_marginTop="45dp"
+                    android:background="@mipmap/ic_worried"
+                    android:onClick="feelingButtons"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/deppressed_text"
+                    tools:ignore="SpeakableTextPresentCheck" />
+
+                <TextView
+                    android:id="@+id/worried_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Worried"
+                    android:textSize="25sp"
+                    app:layout_constraintEnd_toEndOf="@+id/worried_button"
+                    app:layout_constraintStart_toStartOf="@+id/worried_button"
+                    app:layout_constraintTop_toBottomOf="@+id/worried_button" />
+
+                <ImageButton
+                    android:id="@+id/bashful_button"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:layout_marginTop="45dp"
+                    android:background="@mipmap/ic_bashful"
+                    android:onClick="feelingButtons"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/worried_text"
+                    tools:ignore="SpeakableTextPresentCheck" />
+
+                <TextView
+                    android:id="@+id/bashful_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Bashful"
+                    android:textSize="25sp"
+                    app:layout_constraintEnd_toEndOf="@+id/bashful_button"
+                    app:layout_constraintStart_toStartOf="@+id/bashful_button"
+                    app:layout_constraintTop_toBottomOf="@+id/bashful_button" />
+
+                <ImageButton
+                    android:id="@+id/rosy_button"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:layout_marginTop="45dp"
+                    android:background="@mipmap/ic_rosy"
+                    android:onClick="feelingButtons"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/pressured_text"
+                    tools:ignore="SpeakableTextPresentCheck" />
+
+                <TextView
+                    android:id="@+id/rosy_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Rosy"
+                    android:textSize="25sp"
+                    app:layout_constraintEnd_toEndOf="@+id/rosy_button"
+                    app:layout_constraintStart_toStartOf="@+id/rosy_button"
+                    app:layout_constraintTop_toBottomOf="@+id/rosy_button" />
+
+                <ImageButton
+                    android:id="@+id/awkward_button"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:layout_marginTop="45dp"
+                    android:background="@mipmap/ic_akward"
+                    android:onClick="feelingButtons"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/rosy_text"
+                    tools:ignore="SpeakableTextPresentCheck" />
+
+                <TextView
+                    android:id="@+id/awkward_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Awkward"
+                    android:textSize="25sp"
+                    app:layout_constraintEnd_toEndOf="@+id/awkward_button"
+                    app:layout_constraintStart_toStartOf="@+id/awkward_button"
+                    app:layout_constraintTop_toBottomOf="@+id/awkward_button" />
+
+                <ImageButton
+                    android:id="@+id/annoyed_button"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:layout_marginTop="45dp"
+                    android:background="@mipmap/ic_annoyed"
+                    android:onClick="feelingButtons"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/bashful_text"
+                    tools:ignore="SpeakableTextPresentCheck" />
+
+                <TextView
+                    android:id="@+id/annoyed_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Annoyed"
+                    android:textSize="25sp"
+                    app:layout_constraintEnd_toEndOf="@+id/annoyed_button"
+                    app:layout_constraintStart_toStartOf="@+id/annoyed_button"
+                    app:layout_constraintTop_toBottomOf="@+id/annoyed_button" />
+
+                <ImageButton
+                    android:id="@+id/uncomfortable_button"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:layout_marginTop="45dp"
+                    android:background="@mipmap/ic_feelings_uncomfortable"
+                    android:onClick="feelingButtons"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/awkward_text"
+                    tools:ignore="SpeakableTextPresentCheck" />
+
+                <TextView
+                    android:id="@+id/uncomfortable_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Uncomfortable"
+                    android:textSize="25sp"
+                    app:layout_constraintEnd_toEndOf="@+id/uncomfortable_button"
+                    app:layout_constraintStart_toStartOf="@+id/uncomfortable_button"
+                    app:layout_constraintTop_toBottomOf="@+id/uncomfortable_button" />
+
+                <ImageButton
+                    android:id="@+id/envious_button"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:layout_marginTop="45dp"
+                    android:background="@mipmap/ic_feelings_envious"
+                    android:onClick="feelingButtons"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/annoyed_text"
+                    tools:ignore="SpeakableTextPresentCheck" />
+
+                <TextView
+                    android:id="@+id/envious_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Envious"
+                    android:textSize="25sp"
+                    app:layout_constraintEnd_toEndOf="@+id/envious_button"
+                    app:layout_constraintStart_toStartOf="@+id/envious_button"
+                    app:layout_constraintTop_toBottomOf="@+id/envious_button" />
+
+                <ImageButton
+                    android:id="@+id/smug_button"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:layout_marginTop="45dp"
+                    android:background="@mipmap/ic_feelings_smug"
+                    android:onClick="feelingButtons"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/uncomfortable_text"
+                    tools:ignore="SpeakableTextPresentCheck" />
+
+                <TextView
+                    android:id="@+id/smug_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Smug"
+                    android:textSize="25sp"
+                    app:layout_constraintEnd_toEndOf="@+id/smug_button"
+                    app:layout_constraintStart_toStartOf="@+id/smug_button"
+                    app:layout_constraintTop_toBottomOf="@+id/smug_button" />
+
+                <ImageButton
+                    android:id="@+id/cool_button"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:layout_marginTop="45dp"
+                    android:background="@mipmap/ic_feelings_cool"
+                    android:onClick="feelingButtons"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/envious_text"
+                    tools:ignore="SpeakableTextPresentCheck" />
+
+                <TextView
+                    android:id="@+id/cool_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Cool"
+                    android:textSize="25sp"
+                    app:layout_constraintEnd_toEndOf="@+id/cool_button"
+                    app:layout_constraintStart_toStartOf="@+id/cool_button"
+                    app:layout_constraintTop_toBottomOf="@+id/cool_button" />
+
+                <ImageButton
+                    android:id="@+id/goofy_button"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:layout_marginTop="45dp"
+                    android:background="@mipmap/ic_feelings_goofy"
+                    android:onClick="feelingButtons"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/smug_text"
+                    tools:ignore="SpeakableTextPresentCheck" />
+
+                <TextView
+                    android:id="@+id/goofy_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Goofy"
+                    android:textSize="25sp"
+                    app:layout_constraintEnd_toEndOf="@+id/goofy_button"
+                    app:layout_constraintStart_toStartOf="@+id/goofy_button"
+                    app:layout_constraintTop_toBottomOf="@+id/goofy_button" />
+
+                <ImageButton
+                    android:id="@+id/sleepy_button"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:layout_marginTop="45dp"
+                    android:background="@mipmap/ic_feelings_sleepy"
+                    android:onClick="feelingButtons"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/cool_text"
+                    tools:ignore="SpeakableTextPresentCheck" />
+
+                <TextView
+                    android:id="@+id/sleepy_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sleepy"
+                    android:textSize="25sp"
+                    app:layout_constraintEnd_toEndOf="@+id/sleepy_button"
+                    app:layout_constraintStart_toStartOf="@+id/sleepy_button"
+                    app:layout_constraintTop_toBottomOf="@+id/sleepy_button" />
+
+                <ImageButton
+                    android:id="@+id/pensive_button"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:layout_marginTop="45dp"
+                    android:background="@mipmap/ic_feelings_pensive"
+                    android:onClick="feelingButtons"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/goofy_text"
+                    tools:ignore="SpeakableTextPresentCheck" />
+
+                <TextView
+                    android:id="@+id/pensive_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pensive"
+                    android:textSize="25sp"
+                    app:layout_constraintEnd_toEndOf="@+id/pensive_button"
+                    app:layout_constraintStart_toStartOf="@+id/pensive_button"
+                    app:layout_constraintTop_toBottomOf="@+id/pensive_button" />
+
+                <ImageButton
+                    android:id="@+id/hurt_button"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:layout_marginTop="45dp"
+                    android:background="@mipmap/ic_feelings_hurt"
+                    android:onClick="feelingButtons"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/sleepy_text"
+                    tools:ignore="SpeakableTextPresentCheck" />
+
+                <TextView
+                    android:id="@+id/hurt_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Hurt"
+                    android:textSize="25sp"
+                    app:layout_constraintEnd_toEndOf="@+id/hurt_button"
+                    app:layout_constraintStart_toStartOf="@+id/hurt_button"
+                    app:layout_constraintTop_toBottomOf="@+id/hurt_button" />
+
+                <ImageButton
+                    android:id="@+id/stressed_button"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:layout_marginTop="45dp"
+                    android:background="@mipmap/ic_feelings_stressed"
+                    android:onClick="feelingButtons"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/pensive_text"
+                    tools:ignore="SpeakableTextPresentCheck" />
+
+                <TextView
+                    android:id="@+id/stressed_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Stressed"
+                    android:textSize="25sp"
+                    app:layout_constraintEnd_toEndOf="@+id/stressed_button"
+                    app:layout_constraintStart_toStartOf="@+id/stressed_button"
+                    app:layout_constraintTop_toBottomOf="@+id/stressed_button" />
+
+                <ImageButton
+                    android:id="@+id/thoughtful_button"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:layout_marginTop="45dp"
+                    android:background="@mipmap/ic_feelings_thoughtful"
+                    android:onClick="feelingButtons"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/hurt_text"
+                    tools:ignore="SpeakableTextPresentCheck" />
+
+                <TextView
+                    android:id="@+id/thoughtful_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Thoughtful"
+                    android:textSize="25sp"
+                    app:layout_constraintEnd_toEndOf="@+id/thoughtful_button"
+                    app:layout_constraintStart_toStartOf="@+id/thoughtful_button"
+                    app:layout_constraintTop_toBottomOf="@+id/thoughtful_button" />
+
+                <ImageButton
+                    android:id="@+id/scared_button"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:layout_marginTop="45dp"
+                    android:background="@mipmap/ic_feelings_scared"
+                    android:onClick="feelingButtons"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/stressed_text"
+                    tools:ignore="SpeakableTextPresentCheck" />
+
+                <TextView
+                    android:id="@+id/scared_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Scared"
+                    android:textSize="25sp"
+                    app:layout_constraintEnd_toEndOf="@+id/scared_button"
+                    app:layout_constraintStart_toStartOf="@+id/scared_button"
+                    app:layout_constraintTop_toBottomOf="@+id/scared_button" />
+
+                <ImageButton
+                    android:id="@+id/shitty_button"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:layout_marginTop="45dp"
+                    android:background="@mipmap/ic_feelings_shitty"
+                    android:onClick="feelingButtons"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/thoughtful_text"
+                    tools:ignore="SpeakableTextPresentCheck" />
+
+                <TextView
+                    android:id="@+id/shitty_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Shitty"
+                    android:textSize="25sp"
+                    app:layout_constraintEnd_toEndOf="@+id/shitty_button"
+                    app:layout_constraintStart_toStartOf="@+id/shitty_button"
+                    app:layout_constraintTop_toBottomOf="@+id/shitty_button" />
+
+                <ImageButton
+                    android:id="@+id/dead_button"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:layout_marginTop="45dp"
+                    android:background="@mipmap/ic_feelings_dead"
+                    android:onClick="feelingButtons"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/scared_text"
+                    tools:ignore="SpeakableTextPresentCheck" />
+
+                <TextView
+                    android:id="@+id/dead_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Dead"
+                    android:textSize="25sp"
+                    app:layout_constraintEnd_toEndOf="@+id/dead_button"
+                    app:layout_constraintStart_toStartOf="@+id/dead_button"
+                    app:layout_constraintTop_toBottomOf="@+id/dead_button" />
+
+                <ImageButton
+                    android:id="@+id/empty_button"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:layout_marginTop="45dp"
+                    android:background="@mipmap/ic_feelings_empty"
+                    android:onClick="feelingButtons"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/shitty_text"
+                    tools:ignore="SpeakableTextPresentCheck" />
+
+                <TextView
+                    android:id="@+id/empty_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Empty"
+                    android:textSize="25sp"
+                    app:layout_constraintEnd_toEndOf="@+id/empty_button"
+                    app:layout_constraintStart_toStartOf="@+id/empty_button"
+                    app:layout_constraintTop_toBottomOf="@+id/empty_button" />
+
+                <ImageButton
+                    android:id="@+id/antsy_button"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:layout_marginTop="45dp"
+                    android:background="@mipmap/ic_feelings_antsy"
+                    android:onClick="feelingButtons"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/dead_text"
+                    tools:ignore="SpeakableTextPresentCheck" />
+
+                <TextView
+                    android:id="@+id/antsy_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Antsy"
+                    android:textSize="25sp"
+                    app:layout_constraintEnd_toEndOf="@+id/antsy_button"
+                    app:layout_constraintStart_toStartOf="@+id/antsy_button"
+                    app:layout_constraintTop_toBottomOf="@+id/antsy_button" />
+
+                <ImageButton
+                    android:id="@+id/alienated_button"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:layout_marginTop="45dp"
+                    android:background="@mipmap/ic_feelings_alienated"
+                    android:onClick="feelingButtons"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/empty_text"
+                    tools:ignore="SpeakableTextPresentCheck" />
+
+                <TextView
+                    android:id="@+id/alienated_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Alienated"
+                    android:textSize="25sp"
+                    app:layout_constraintEnd_toEndOf="@+id/alienated_button"
+                    app:layout_constraintStart_toStartOf="@+id/alienated_button"
+                    app:layout_constraintTop_toBottomOf="@+id/alienated_button" />
+
+                <ImageButton
+                    android:id="@+id/okay_button"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:layout_marginTop="45dp"
+                    android:background="@mipmap/ic_feelings_okay"
+                    android:onClick="feelingButtons"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/antsy_text"
+                    tools:ignore="SpeakableTextPresentCheck" />
+
+                <TextView
+                    android:id="@+id/okay_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Okay"
+                    android:textSize="25sp"
+                    app:layout_constraintEnd_toEndOf="@+id/okay_button"
+                    app:layout_constraintStart_toStartOf="@+id/okay_button"
+                    app:layout_constraintTop_toBottomOf="@+id/okay_button" />
+
+                <ImageButton
+                    android:id="@+id/other_feeling_button"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:layout_marginTop="45dp"
+                    android:background="@mipmap/ic_feelings_other"
+                    android:onClick="feelingButtons"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/alienated_text"
+                    tools:ignore="SpeakableTextPresentCheck" />
+
+                <TextView
+                    android:id="@+id/other_feeling_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Other"
+                    android:textSize="25sp"
+                    app:layout_constraintEnd_toEndOf="@+id/other_feeling_button"
+                    app:layout_constraintStart_toStartOf="@+id/other_feeling_button"
+                    app:layout_constraintTop_toBottomOf="@+id/other_feeling_button" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</RelativeLayout>
