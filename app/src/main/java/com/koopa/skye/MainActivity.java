@@ -8,31 +8,16 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.icu.text.CaseMap;
 import android.os.Bundle;
 import android.util.Base64;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-
-import com.baoyz.swipemenulistview.SwipeMenu;
-import com.baoyz.swipemenulistview.SwipeMenuCreator;
-import com.baoyz.swipemenulistview.SwipeMenuItem;
-import com.baoyz.swipemenulistview.SwipeMenuListView;
 import com.google.android.material.navigation.NavigationView;
 import com.koopa.skye.Fragments.Main.HomeFragment;
 import com.koopa.skye.Fragments.Main.JournalFragment;
 import com.koopa.skye.Fragments.Main.LibraryFragment;
 import com.koopa.skye.Fragments.Main.SettingsFragment;
 import com.koopa.skye.Fragments.Main.SkyeFragment;
-
-import java.io.ByteArrayOutputStream;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
