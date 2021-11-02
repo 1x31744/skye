@@ -1,4 +1,4 @@
-package com.koopa.skye;
+package com.koopa.skye.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -18,6 +18,7 @@ import com.koopa.skye.Fragments.Main.JournalFragment;
 import com.koopa.skye.Fragments.Main.LibraryFragment;
 import com.koopa.skye.Fragments.Main.SettingsFragment;
 import com.koopa.skye.Fragments.Main.SkyeFragment;
+import com.koopa.skye.R;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 

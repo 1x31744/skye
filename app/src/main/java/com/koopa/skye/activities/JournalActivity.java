@@ -1,4 +1,4 @@
-package com.koopa.skye;
+package com.koopa.skye.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -7,10 +7,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.database.Cursor;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.BitmapRegionDecoder;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
@@ -21,7 +18,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.koopa.skye.Fragments.Journal.JournalPageFeelings;
@@ -33,6 +29,8 @@ import com.koopa.skye.Fragments.Journal.JournalPageReasonText;
 import com.koopa.skye.Fragments.Journal.JournalPageScale;
 import com.koopa.skye.Fragments.Journal.JournalPageTitle;
 import com.koopa.skye.Fragments.Journal.JournalPageDate;
+import com.koopa.skye.R;
+import com.koopa.skye.activities.MainActivity;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;

@@ -14,4 +14,21 @@ public class LibraryContents {
         this.contents = contents;
         this.image = image;
     }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public String getContents() {
+        return contents;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
 }

@@ -1,11 +1,14 @@
 package com.koopa.skye.Fragments.Main;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -17,12 +20,12 @@ import com.baoyz.swipemenulistview.SwipeMenuItem;
 import com.baoyz.swipemenulistview.SwipeMenuListView;
 import com.koopa.skye.LibraryContents;
 import com.koopa.skye.LibraryListAdapter;
-import com.koopa.skye.MainActivity;
+import com.koopa.skye.activities.LibraryItemViewActivity;
+import com.koopa.skye.activities.MainActivity;
 import com.koopa.skye.R;
 import com.koopa.skye.TinyDB;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class LibraryFragment extends Fragment {
 
@@ -52,6 +55,8 @@ public class LibraryFragment extends Fragment {
         }
 
 
+
+
         addContents();
 
         libraryListAdapter = new LibraryListAdapter(getActivity(), arrayList);
@@ -61,38 +66,27 @@ public class LibraryFragment extends Fragment {
 
             @Override
             public void create(SwipeMenu menu) {
+
                 // create "open" item
-                SwipeMenuItem openItem = new SwipeMenuItem(
+                SwipeMenuItem editTitleItem = new SwipeMenuItem(
                         getActivity().getApplicationContext());
-                // set item background
-                openItem.setBackground(new ColorDrawable(Color.rgb(0x00, 0xb7,
+                editTitleItem.setBackground(new ColorDrawable(Color.rgb(0x00, 0xb7,
                         0xeb)));
-                // set item width
-                openItem.setWidth(270);
-                // set item title
-                openItem.setTitle("Edit");
-                // set item title fontsize
-                openItem.setTitleSize(18);
-                // set item title font color
-                openItem.setTitleColor(Color.WHITE);
-                // add to menu
-                menu.addMenuItem(openItem);
+                editTitleItem.setWidth(270);
+                editTitleItem.setTitle("Edit");
+                editTitleItem.setTitleSize(18);
+                editTitleItem.setTitleColor(Color.WHITE);
+                menu.addMenuItem(editTitleItem);
 
                 // create "delete" item
                 SwipeMenuItem deleteItem = new SwipeMenuItem(
                         getActivity().getApplicationContext());
-                // set item background
                 deleteItem.setBackground(new ColorDrawable(Color.rgb(0xF9,
                         0x3F, 0x25)));
-                // set item width
                 deleteItem.setWidth(270);
-                //set item title
                 deleteItem.setTitle("Delete");
-                //set item title fontsize
                 deleteItem.setTitleSize(18);
-                //set item title font color
                 deleteItem.setTitleColor(Color.WHITE);
-                // add to menu
                 menu.addMenuItem(deleteItem);
             }
         };
@@ -105,7 +99,7 @@ public class LibraryFragment extends Fragment {
             public boolean onMenuItemClick(int position, SwipeMenu menu, int index) {
                 switch (index) {
                     case 0:
-                        // edit
+
                         break;
                     case 1:
                         removeContents(position);
@@ -114,6 +108,23 @@ public class LibraryFragment extends Fragment {
                 }
                 // false : close the menu; true : not close the menu
                 return false;
+            }
+        });
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                LibraryContents selectedItem = (LibraryContents) parent.getItemAtPosition(position);
+                String title = selectedItem.getTitle();
+                String date = selectedItem.getDate();
+                String contents = selectedItem.getContents();
+                String image = selectedItem.getImage();
+                Intent intent = new Intent(getActivity(), LibraryItemViewActivity.class);
+                intent.putExtra("title", title);
+                intent.putExtra("date", date);
+                intent.putExtra("contents", contents);
+                intent.putExtra("image", image);
+                startActivity(intent);
             }
         });
 

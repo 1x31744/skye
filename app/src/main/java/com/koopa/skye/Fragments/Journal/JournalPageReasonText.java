@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.koopa.skye.JournalActivity;
+import com.koopa.skye.activities.JournalActivity;
 import com.koopa.skye.R;
 
 public class JournalPageReasonText extends Fragment {
