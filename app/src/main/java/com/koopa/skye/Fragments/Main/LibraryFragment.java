@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Adapter;
 import android.widget.AdapterView;
 
 import androidx.annotation.NonNull;
@@ -20,6 +21,7 @@ import com.baoyz.swipemenulistview.SwipeMenuItem;
 import com.baoyz.swipemenulistview.SwipeMenuListView;
 import com.koopa.skye.LibraryContents;
 import com.koopa.skye.LibraryListAdapter;
+import com.koopa.skye.activities.LIbraryItemEdit;
 import com.koopa.skye.activities.LibraryItemViewActivity;
 import com.koopa.skye.activities.MainActivity;
 import com.koopa.skye.R;
@@ -99,6 +101,8 @@ public class LibraryFragment extends Fragment {
             public boolean onMenuItemClick(int position, SwipeMenu menu, int index) {
                 switch (index) {
                     case 0:
+                        LibraryContents selectedItem = libraryListAdapter.getItem(position);
+                        activityChange(LIbraryItemEdit.class, position, selectedItem);
 
                         break;
                     case 1:
@@ -115,16 +119,7 @@ public class LibraryFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 LibraryContents selectedItem = (LibraryContents) parent.getItemAtPosition(position);
-                String title = selectedItem.getTitle();
-                String date = selectedItem.getDate();
-                String contents = selectedItem.getContents();
-                String image = selectedItem.getImage();
-                Intent intent = new Intent(getActivity(), LibraryItemViewActivity.class);
-                intent.putExtra("title", title);
-                intent.putExtra("date", date);
-                intent.putExtra("contents", contents);
-                intent.putExtra("image", image);
-                startActivity(intent);
+                activityChange(LibraryItemViewActivity.class, position, selectedItem);
             }
         });
 
@@ -149,5 +144,18 @@ public class LibraryFragment extends Fragment {
     void removeContents(int position){
         arrayList.remove(position);
         tinydb.putListContents("arraylist", arrayList);
+    }
+
+    void activityChange(Class clas, int position, LibraryContents selectedItem){
+        String title = selectedItem.getTitle();
+        String date = selectedItem.getDate();
+        String contents = selectedItem.getContents();
+        String image = selectedItem.getImage();
+        Intent intent = new Intent(getActivity(), clas);
+        intent.putExtra("title", title);
+        intent.putExtra("date", date);
+        intent.putExtra("contents", contents);
+        intent.putExtra("image", image);
+        startActivity(intent);
     }
 }

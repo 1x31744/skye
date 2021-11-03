@@ -10,15 +10,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SkyE">
         <activity
+            android:name=".activities.LIbraryItemEdit"
+            android:exported="true"
+            android:theme="@style/ColoredStatusBar"/>
+        <activity
             android:name=".activities.JournalActivity"
             android:exported="true"
             android:parentActivityName=".activities.MainActivity"
-            android:theme="@style/ColoredStatusBar"/>
+            android:theme="@style/ColoredStatusBar" />
         <activity
             android:name=".activities.LibraryItemViewActivity"
             android:exported="true"
             android:parentActivityName=".activities.MainActivity"
-            android:theme="@style/ColoredStatusBar"/>
+            android:theme="@style/ColoredStatusBar" />
         <activity
             android:name=".activities.MainActivity"
             android:exported="true"
@@ -30,4 +34,5 @@
             </intent-filter>
         </activity>
     </application>
+
 </manifest>

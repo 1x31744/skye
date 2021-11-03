@@ -6,6 +6,7 @@
         <entry key="app/src/main/res/drawable-hdpi/ic_other_message.xml" value="0.2786458333333333" />
         <entry key="app/src/main/res/drawable/ic_message.xml" value="0.2786458333333333" />
         <entry key="app/src/main/res/layout/activity_journal.xml" value="0.13229166666666667" />
+        <entry key="app/src/main/res/layout/activity_library_item_edit.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_library_item_view.xml" value="0.2625" />
         <entry key="app/src/main/res/layout/fragment_library.xml" value="0.2625" />
         <entry key="app/src/main/res/layout/fragment_skye.xml" value="0.2625" />
