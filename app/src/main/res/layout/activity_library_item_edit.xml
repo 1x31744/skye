@@ -7,6 +7,7 @@
     tools:context=".activities.LIbraryItemEdit">
 
     <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar2"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/black"
@@ -22,9 +23,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
+            android:contentDescription="TODO"
             android:src="@drawable/ic_baseline_arrow_back_24"
-            tools:ignore="SpeakableTextPresentCheck"
-            android:contentDescription="TODO" />
+            tools:ignore="SpeakableTextPresentCheck" />
 
 
         <TextView
@@ -39,5 +40,15 @@
             android:textSize="20sp" />
 
     </androidx.appcompat.widget.Toolbar>
+
+    <FrameLayout
+        android:id="@+id/library_edit_pageContainer"
+        android:layout_width="match_parent"
+        android:layout_height="675dp"
+        android:background="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

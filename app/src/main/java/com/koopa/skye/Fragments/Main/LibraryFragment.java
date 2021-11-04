@@ -103,8 +103,8 @@ public class LibraryFragment extends Fragment {
                     case 0:
                         LibraryContents selectedItem = libraryListAdapter.getItem(position);
                         activityChange(LIbraryItemEdit.class, position, selectedItem);
-
                         break;
+
                     case 1:
                         removeContents(position);
                         libraryListAdapter.notifyDataSetChanged();

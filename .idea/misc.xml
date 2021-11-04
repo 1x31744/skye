@@ -10,8 +10,14 @@
         <entry key="app/src/main/res/layout/activity_library_item_view.xml" value="0.2625" />
         <entry key="app/src/main/res/layout/fragment_library.xml" value="0.2625" />
         <entry key="app/src/main/res/layout/fragment_skye.xml" value="0.2625" />
+        <entry key="app/src/main/res/layout/journal_page_feelings.xml" value="0.2625" />
+        <entry key="app/src/main/res/layout/journal_page_feelings_reason.xml" value="0.2625" />
+        <entry key="app/src/main/res/layout/journal_page_title.xml" value="0.12864583333333332" />
         <entry key="app/src/main/res/layout/library_edit_choice.xml" value="0.2625" />
         <entry key="app/src/main/res/layout/library_item.xml" value="0.2625" />
+        <entry key="app/src/main/res/layout/library_item_edit_contents.xml" value="0.12864583333333332" />
+        <entry key="app/src/main/res/layout/library_item_edit_date.xml" value="0.12864583333333332" />
+        <entry key="app/src/main/res/layout/library_item_edit_title.xml" value="0.2625" />
         <entry key="app/src/main/res/layout/nav_header.xml" value="0.2625" />
         <entry key="app/src/main/res/layout/skye_message_item.xml" value="0.2625" />
         <entry key="app/src/main/res/layout/skye_other_message_item.xml" value="0.2625" />

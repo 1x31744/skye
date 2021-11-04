@@ -30,7 +30,6 @@ import com.koopa.skye.Fragments.Journal.JournalPageScale;
 import com.koopa.skye.Fragments.Journal.JournalPageTitle;
 import com.koopa.skye.Fragments.Journal.JournalPageDate;
 import com.koopa.skye.R;
-import com.koopa.skye.activities.MainActivity;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -90,7 +89,7 @@ public class JournalActivity extends AppCompatActivity{
     }
 
     public Fragment currentFragment(){
-        return getSupportFragmentManager().findFragmentById(R.id.pageContainer);
+        return getSupportFragmentManager().findFragmentById(R.id.library_edit_pageContainer);
     }
     @Override
     public void onBackPressed() {
@@ -98,7 +97,7 @@ public class JournalActivity extends AppCompatActivity{
     }
     public void backButton(View view){
         pageNumber -= 2;
-        currentFragment = String.valueOf((getSupportFragmentManager().findFragmentById(R.id.pageContainer)).getClass());
+        currentFragment = String.valueOf((getSupportFragmentManager().findFragmentById(R.id.library_edit_pageContainer)).getClass());
 
         if (currentFragment() instanceof JournalPageTitle){
             super.onBackPressed();
@@ -274,7 +273,7 @@ public class JournalActivity extends AppCompatActivity{
             ((TextView)findViewById(R.id.toolbar_title)).setText(pageTitle);
             fragmentManager = getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.pageContainer, fragment);
+            fragmentTransaction.replace(R.id.journal_page_container, fragment);
             fragmentTransaction.commit();
         }
     }
