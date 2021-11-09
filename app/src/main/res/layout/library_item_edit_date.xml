@@ -40,7 +40,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="120dp"
         android:background="@color/cyan"
-        android:onClick="edit_title_button"
+        android:onClick="finishEditing"
         android:text="Done"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"

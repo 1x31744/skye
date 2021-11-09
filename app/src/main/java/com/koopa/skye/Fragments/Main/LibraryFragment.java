@@ -40,6 +40,8 @@ public class LibraryFragment extends Fragment {
 
     LibraryListAdapter libraryListAdapter;
 
+    String title;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -56,10 +58,17 @@ public class LibraryFragment extends Fragment {
             arrayList = new ArrayList<>();
         }
 
+        title = MainActivity.libraryTitle;
+        if (MainActivity.libraryTitle == null){
+            Log.v("hello", "doene");
+        }
 
-
-
-        addContents();
+        if (MainActivity.libraryEdit){
+            addEdits();
+        }
+        else {
+            addContents();
+        }
 
         libraryListAdapter = new LibraryListAdapter(getActivity(), arrayList);
         listView.setAdapter(libraryListAdapter);
@@ -126,9 +135,28 @@ public class LibraryFragment extends Fragment {
         return root;
     }
 
+    private void addEdits() {
+
+
+        if (title != null) {
+
+            contents = new LibraryContents(MainActivity.libraryTitle, MainActivity.libraryDate, MainActivity.entryContents, MainActivity.sEncodedImage);
+            arrayList.set(MainActivity.editPosition, contents);
+        }
+
+        MainActivity.libraryTitle = null;
+        MainActivity.libraryDate = null;
+        MainActivity.entryContents = null;
+        MainActivity.sEncodedImage = null;
+        MainActivity.libraryEdit = false;
+
+        tinydb.putListContents("arraylist", arrayList);
+
+    }
+
     void addContents(){
 
-        if (MainActivity.libraryTitle != null) {
+        if (title != null) {
             contents = new LibraryContents(MainActivity.libraryTitle, MainActivity.libraryDate, MainActivity.entryContents, MainActivity.sEncodedImage);
             arrayList.add(contents);
         }
@@ -156,6 +184,7 @@ public class LibraryFragment extends Fragment {
         intent.putExtra("date", date);
         intent.putExtra("contents", contents);
         intent.putExtra("image", image);
+        intent.putExtra("position", position);
         startActivity(intent);
     }
 }

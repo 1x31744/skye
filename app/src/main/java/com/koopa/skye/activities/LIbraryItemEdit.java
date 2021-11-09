@@ -7,7 +7,9 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 
 import com.koopa.skye.Fragments.LibraryEdit.EditContents;
 import com.koopa.skye.Fragments.LibraryEdit.EditDate;
@@ -22,7 +24,7 @@ public class LIbraryItemEdit extends AppCompatActivity {
     public static String date;
     public static String contents;
     public static String image;
-    int position;
+    int position = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +38,7 @@ public class LIbraryItemEdit extends AppCompatActivity {
         date = intent.getStringExtra("date");
         contents = intent.getStringExtra("contents");
         image = intent.getStringExtra("image");
+        position = intent.getIntExtra("position", 0);
     }
 
     public void changeEditFragment(View view){
@@ -54,14 +57,31 @@ public class LIbraryItemEdit extends AppCompatActivity {
         }
     }
 
-    public void finish(View view){
+    public void finishEditing (View view){
+
+        if (currentFragment() == EditTitle.class) {
+            title = String.valueOf(((EditText)findViewById(R.id.edit_title)).getText());
+        }
+        else if (currentFragment() == EditDate.class) {
+            date = String.valueOf(((EditText)findViewById(R.id.edit_date)).getText());
+        }
+        else if (currentFragment() == EditContents.class) {
+            contents = String.valueOf(((EditText)findViewById(R.id.edit_contents)).getText());
+        }
+
+
         Intent intent = new Intent(this, MainActivity.class);
         intent.putExtra("editedTitle", title);
         intent.putExtra("editedDate", date);
         intent.putExtra("editedContents", contents);
         intent.putExtra("editedImage", image);
         intent.putExtra("justEdited", true);
+        intent.putExtra("position", position);
         startActivity(intent);
+    }
+
+    public Class currentFragment(){
+        return getSupportFragmentManager().findFragmentById(R.id.library_edit_pageContainer).getClass();
     }
 
     void changeFragment(Fragment fragment){

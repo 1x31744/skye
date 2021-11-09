@@ -89,7 +89,7 @@ public class JournalActivity extends AppCompatActivity{
     }
 
     public Fragment currentFragment(){
-        return getSupportFragmentManager().findFragmentById(R.id.library_edit_pageContainer);
+        return getSupportFragmentManager().findFragmentById(R.id.journal_page_container);
     }
     @Override
     public void onBackPressed() {
@@ -97,7 +97,7 @@ public class JournalActivity extends AppCompatActivity{
     }
     public void backButton(View view){
         pageNumber -= 2;
-        currentFragment = String.valueOf((getSupportFragmentManager().findFragmentById(R.id.library_edit_pageContainer)).getClass());
+        currentFragment = String.valueOf((getSupportFragmentManager().findFragmentById(R.id.journal_page_container)).getClass());
 
         if (currentFragment() instanceof JournalPageTitle){
             super.onBackPressed();
@@ -230,6 +230,7 @@ public class JournalActivity extends AppCompatActivity{
             replaceFragment(new JournalPageTitle());
         }
     }
+
     @SuppressLint("MissingSuperCall")
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {

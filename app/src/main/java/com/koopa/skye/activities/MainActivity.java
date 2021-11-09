@@ -10,6 +10,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Base64;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import com.google.android.material.navigation.NavigationView;
@@ -28,6 +29,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public static String libraryDate;
     public static String entryContents;
     public static String sEncodedImage;
+    public static boolean libraryEdit;
+    public static int editPosition;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +39,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setContentView(R.layout.activity_main);
 
         Intent intent = getIntent();
+
         libraryTitle = intent.getStringExtra("entryTitle");
+        if (libraryTitle != null){
+            Log.v(libraryTitle, libraryTitle);
+        }
         libraryDate = intent.getStringExtra("entryDate");
         String libraryScale = intent.getStringExtra("entryScale");
         String[] libraryReasons = intent.getStringArrayExtra("entryReasons");
@@ -65,9 +72,25 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Bundle extras = intent.getExtras();
 
         if (extras != null) {
-            byte[] b = extras.getByteArray("entryImage");
+            byte[] b = new byte[0];
+            if (extras.getByteArray("entryImage") != null) {
+                b = extras.getByteArray("entryImage");
+            }
             sEncodedImage = Base64.encodeToString(b, Base64.DEFAULT);
         }
+
+        libraryEdit = intent.getBooleanExtra("justEdited", false);
+        if (libraryEdit){
+            libraryTitle = intent.getStringExtra("editedTitle");
+            libraryDate = intent.getStringExtra("editedDate");
+            entryContents = intent.getStringExtra("editedContents");
+            sEncodedImage = intent.getStringExtra("editedImage");
+
+        }
+        editPosition = intent.getIntExtra("position", 0);
+        Log.v("ok", String.valueOf(libraryEdit));
+
+
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
