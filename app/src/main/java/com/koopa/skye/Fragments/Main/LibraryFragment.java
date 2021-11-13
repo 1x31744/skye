@@ -10,6 +10,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Adapter;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -28,8 +31,10 @@ import com.koopa.skye.R;
 import com.koopa.skye.TinyDB;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 
-public class LibraryFragment extends Fragment {
+public class LibraryFragment extends Fragment implements AdapterView.OnItemSelectedListener {
 
     LibraryContents contents;
     TinyDB tinydb;
@@ -40,13 +45,19 @@ public class LibraryFragment extends Fragment {
 
     LibraryListAdapter libraryListAdapter;
 
-    String title;
+    String[] sortingOptions = {"Custom", "Date (eldest first)", "Date (eldest last)", "Alphabetically"};
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_library, null);
+
+        Spinner spin = (Spinner) root.findViewById(R.id.spinner);
+        ArrayAdapter sortArrayAdapter = new ArrayAdapter(getActivity(), android.R.layout.simple_spinner_item, sortingOptions);
+        sortArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spin.setAdapter(sortArrayAdapter);
+        spin.setOnItemSelectedListener(this);
 
         tinydb = new TinyDB(getActivity());
         listView = (root.findViewById(R.id.library_list));
@@ -56,11 +67,6 @@ public class LibraryFragment extends Fragment {
         }
         else {
             arrayList = new ArrayList<>();
-        }
-
-        title = MainActivity.libraryTitle;
-        if (MainActivity.libraryTitle == null){
-            Log.v("hello", "doene");
         }
 
         if (MainActivity.libraryEdit){
@@ -138,7 +144,7 @@ public class LibraryFragment extends Fragment {
     private void addEdits() {
 
 
-        if (title != null) {
+        if (MainActivity.libraryTitle != null) {
 
             contents = new LibraryContents(MainActivity.libraryTitle, MainActivity.libraryDate, MainActivity.entryContents, MainActivity.sEncodedImage);
             arrayList.set(MainActivity.editPosition, contents);
@@ -156,7 +162,7 @@ public class LibraryFragment extends Fragment {
 
     void addContents(){
 
-        if (title != null) {
+        if (MainActivity.libraryTitle != null) {
             contents = new LibraryContents(MainActivity.libraryTitle, MainActivity.libraryDate, MainActivity.entryContents, MainActivity.sEncodedImage);
             arrayList.add(contents);
         }
@@ -186,5 +192,82 @@ public class LibraryFragment extends Fragment {
         intent.putExtra("image", image);
         intent.putExtra("position", position);
         startActivity(intent);
+    }
+
+    public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
+        switch (position){
+            case 0:
+                //Custom Selected
+                break;
+            case 1:
+                //Date (eldest first)
+                break;
+            case 2:
+                //Date (eldest last)
+                break;
+            case 3:
+                //Alphabetically
+                int maxPosition = libraryListAdapter.getCount();
+                ArrayList<String> titles = new ArrayList<>();
+                ArrayList<String> dates = new ArrayList<>();
+                ArrayList<String> contents = new ArrayList<>();
+                ArrayList<String> images = new ArrayList<>();
+                for (int i = 0; i < maxPosition; i++) {
+
+                    LibraryContents item = libraryListAdapter.getItem(i);
+
+                    titles.add(item.getTitle());
+                    dates.add(item.getDate());
+                    contents.add(item.getContents());
+                    images.add(item.getImage());
+                }
+
+                //Collections.sort(titles);
+
+                String[] newTitles = titles.toArray(new String[titles.size()]);
+                String[] newDates = dates.toArray(new String[dates.size()]);
+                String[] newContents = contents.toArray(new String[contents.size()]);
+                String[] newImages = images.toArray(new String[images.size()]);
+
+                String tempTitles;
+                String tempDates;
+                String tempContents;
+                String tempImages;
+                for (int j = 0; j < newTitles.length; j++) {
+                    for (int i = j + 1; i < newTitles.length; i++) {
+                        // comparing strings
+                        if (newTitles[i].compareTo(newTitles[j]) < 0) {
+                            tempTitles = newTitles[j];
+                            newTitles[j] = newTitles[i];
+                            newTitles[i] = tempTitles;
+
+                            tempDates = newDates[j];
+                            newDates[j] = newDates[i];
+                            newDates[i] = tempDates;
+
+                            tempContents = newContents[j];
+                            newContents[j] = newContents[i];
+                            newContents[i] = tempContents;
+
+                            tempImages = newImages[j];
+                            newImages[j] = newImages[i];
+                            newImages[i] = tempImages;
+                        }
+                    }
+                }
+
+                for (int i = 0; i < maxPosition; i++) {
+
+                    LibraryContents newItem = new LibraryContents(newTitles[i], newDates[i], newContents[i], newImages[i]);
+                    arrayList.set(i, newItem);
+                }
+                libraryListAdapter.notifyDataSetChanged();
+                break;
+        }
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
+
     }
 }

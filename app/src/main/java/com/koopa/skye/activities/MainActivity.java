@@ -13,6 +13,8 @@ import android.util.Base64;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Spinner;
+
 import com.google.android.material.navigation.NavigationView;
 import com.koopa.skye.Fragments.Main.HomeFragment;
 import com.koopa.skye.Fragments.Main.JournalFragment;
