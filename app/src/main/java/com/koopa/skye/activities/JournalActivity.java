@@ -89,6 +89,7 @@ public class JournalActivity extends AppCompatActivity{
     }
 
     public Fragment currentFragment(){
+        //Gets the current fragment
         return getSupportFragmentManager().findFragmentById(R.id.journal_page_container);
     }
     @Override

@@ -20,7 +20,7 @@ public class SettingsFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_settings,container, false);
-
+        //sets id of the dark mode switch
         darkModeSwitch = ((Switch)root.findViewById(R.id.dark_mode_switch));
 
         return root;

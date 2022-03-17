@@ -25,18 +25,24 @@ public class JournalFragment extends Fragment{
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_journal, null);
 
+        //Sets the title to a random one
         ((TextView)root.findViewById(R.id.journal_title)).setText(RandomTitle());
+        //sets id of the button
         Button button = ((Button)root.findViewById(R.id.button));
 
         return root;
     }
 
     public String RandomTitle(){
+        //Sets the titles that can be used
         String[] journalTitles = {"Start Your Story.", "Begin Your Journey.", "This is where it all starts.",
                 "You Got this!", "Lets Go!", "You Got this!", "I Believe In You"};
 
+        //picks which one to use
         int randomIndex = random.nextInt(journalTitles.length);
+        //Makes a string with the title
         String journalTitle = journalTitles[randomIndex];
+        //Returns the title
         return journalTitle;
     }
 }

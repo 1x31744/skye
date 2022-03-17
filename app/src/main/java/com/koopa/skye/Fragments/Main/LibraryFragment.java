@@ -59,23 +59,34 @@ public class LibraryFragment extends Fragment implements AdapterView.OnItemSelec
         spin.setAdapter(sortArrayAdapter);
         spin.setOnItemSelectedListener(this);
 
+        /*Context: ListView contains the ArrayLists, Arraylists are the actual entries
+        Arraylists are made up of contents which contains variables defined in the
+        LibraryContents class*/
+
+        ///Gets database and sets the listview
         tinydb = new TinyDB(getActivity());
         listView = (root.findViewById(R.id.library_list));
 
+        //Restores array list from database
         if (tinydb.getListContents("arraylist") != null) {
             arrayList = new ArrayList<LibraryContents>(tinydb.getListContents("arraylist"));
         }
+        //If nothing in database, set to new ArrayList
         else {
             arrayList = new ArrayList<>();
         }
 
+        //Checks if the boolean libraryEdit is true to see which function to call
         if (MainActivity.libraryEdit){
             addEdits();
         }
+        /*If not true just goes to default adding content which is later decided in addContents if
+        there is any to add*/
         else {
             addContents();
         }
 
+        //Sets up swiping listview
         libraryListAdapter = new LibraryListAdapter(getActivity(), arrayList);
         listView.setAdapter(libraryListAdapter);
 
@@ -110,6 +121,7 @@ public class LibraryFragment extends Fragment implements AdapterView.OnItemSelec
         // set creator
         listView.setMenuCreator(creator);
 
+        //Click listener for the swipe view
         listView.setOnMenuItemClickListener(new SwipeMenuListView.OnMenuItemClickListener() {
             @Override
             @NonNull
@@ -130,6 +142,7 @@ public class LibraryFragment extends Fragment implements AdapterView.OnItemSelec
             }
         });
 
+        //Opens large view when entry is clicked on
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -144,43 +157,54 @@ public class LibraryFragment extends Fragment implements AdapterView.OnItemSelec
     private void addEdits() {
 
 
+        //Checks if isn't null so not adding a null entry
         if (MainActivity.libraryTitle != null) {
-
+            ///Adds entry details stored in the MainActivity
             contents = new LibraryContents(MainActivity.libraryTitle, MainActivity.libraryDate, MainActivity.entryContents, MainActivity.sEncodedImage);
+            //Makes the edits the arraylist numbered by .editposition
             arrayList.set(MainActivity.editPosition, contents);
         }
 
+        //Sets everything to null for next edits
         MainActivity.libraryTitle = null;
         MainActivity.libraryDate = null;
         MainActivity.entryContents = null;
         MainActivity.sEncodedImage = null;
         MainActivity.libraryEdit = false;
 
+        //Updates database
         tinydb.putListContents("arraylist", arrayList);
 
     }
 
     void addContents(){
 
+        //Checks if null, so it's not adding a null entry
         if (MainActivity.libraryTitle != null) {
+            //Sets the contents to the variables in MainActivity
             contents = new LibraryContents(MainActivity.libraryTitle, MainActivity.libraryDate, MainActivity.entryContents, MainActivity.sEncodedImage);
+            //Adds it as an arraylist with the contents
             arrayList.add(contents);
         }
 
+        //Sets variables to null so no other entry is added next time opening fragment
         MainActivity.libraryTitle = null;
         MainActivity.libraryDate = null;
         MainActivity.entryContents = null;
         MainActivity.sEncodedImage = null;
 
+        //adds the arraylist to the database
         tinydb.putListContents("arraylist", arrayList);
     }
 
     void removeContents(int position){
+        //removes array list and updates
         arrayList.remove(position);
         tinydb.putListContents("arraylist", arrayList);
     }
 
     void activityChange(Class clas, int position, LibraryContents selectedItem){
+        //gets data from arraylist and sends it to activity changing to
         String title = selectedItem.getTitle();
         String date = selectedItem.getDate();
         String contents = selectedItem.getContents();
@@ -194,6 +218,7 @@ public class LibraryFragment extends Fragment implements AdapterView.OnItemSelec
         startActivity(intent);
     }
 
+    //Sorts the arraylists
     public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
         switch (position){
             case 0:
@@ -221,8 +246,6 @@ public class LibraryFragment extends Fragment implements AdapterView.OnItemSelec
                     contents.add(item.getContents());
                     images.add(item.getImage());
                 }
-
-                //Collections.sort(titles);
 
                 String[] newTitles = titles.toArray(new String[titles.size()]);
                 String[] newDates = dates.toArray(new String[dates.size()]);
